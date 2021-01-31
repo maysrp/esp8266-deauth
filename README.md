@@ -13,3 +13,12 @@ https://github.com/PakchoiFood/micropython-deauth
 |OUT|   A0|
 |VCC   |3v3|
 |GND   |GND|
+
+
+
+|OLED I2C|ESP8266|
+|-|-|
+|SDA|D2|
+|SCK(SCL)|D1|
+|VCC|3v3|
+|GND|GND|
