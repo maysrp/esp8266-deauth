@@ -10,6 +10,18 @@ from ssd1306 import SSD1306_I2C
 oled = SSD1306_I2C(128, 64, i2c) 
 q=attack.ap_list()[0:8]
 
+#连线
+# A0 -----AD KeyBoard[OUT]
+# D1     SCL
+# D2     SDA
+
+
+z=range(0,50) #左
+y=range(500,550) #右
+s=range(150,200) #上
+x=range(300,350) #下
+que=range(750,800) #确认
+
 def view(q,num=0):
     num=mun(num)
     oled.fill(0)
@@ -64,23 +76,23 @@ num=0
 st=0
 while 1:
     v=adc.read()
-    if v in range(150,200):
+    if v in s:#上
         num-=1
         num=mun(num)
         wi=select(q,num)
         viewLisn(lisn)
-    elif v in range(300,350):
+    elif v in x:#下
         num+=1
         num=mun(num)
         wi=select(q,num)
         viewLisn(lisn)
-    elif v in range(750,800):
+    elif v in que:#确认
         st=785
-    elif v in range(0,50):
+    elif v in z:#左 退出
         st=0
         wi=select(q,num)
         viewLisn(lisn)
-    elif v in range(500,550):
+    elif v in y:#右 多选擦看
         wi=view(q,num)
         num=mun(num)
         if wi in lis:
